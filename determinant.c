@@ -1,11 +1,28 @@
 #include <stdio.h>
 
-void trans(float m[100][100],int n,int from,int to)
+void print(float m[100][100],int n)
 {
-	int i;
+	printf("\n");
+	int i,j;
 	for (i = 0; i < n; i++)
 	{
-		m[to][i]=(m[to][i])-((m[to][0]/m[from][0])*m[from][i]);
+		for (j = 0; j < n; j++)
+		{
+			printf("%f  ",m[i][j]);
+			/* code */
+		}
+		printf("\n");
+		/* code */
+	}
+}
+void trans(float m[100][100],int n,int from,int to)
+{
+	int i;int f=m[to][0],t=m[from][0];
+	for (i = 0; i < n; i++)
+	{
+		m[to][i]=(m[to][i])-((f/t)*m[from][i]);
+		//printf("\n%f",m[to][i]);
+		
 		/* code */
 	}
 }
@@ -14,13 +31,27 @@ void compute(float m[100][100],int n)
 	int i,j;
 	for (i = 0; i < n; i++)
 	{
-		for (j = i+1; i < n; i++)
+		//printf("%f\n",m[i][0]);
+		if ((int)m[i][0]==0)
 		{
+			i++;
+			//printf("%d\n",i);
+			/* code */
+		}
+		if (m[i][i]==0)
+		{
+			break;
+			/* code */
+		}
+		for (j = i+1; j < n; j++)
+		{
+			//print(m,n);
 			trans(m,n,i,j);
 			/* code */
 		}
 		/* code */
 	}
+	
 }
 float det(float m[100][100],int n)
 {
@@ -28,7 +59,7 @@ float det(float m[100][100],int n)
 	int i,j;float d=1;
 	for (i = 0; i < n; i++)
 	{
-		for (j = 0; i < n; i++)
+		for (j = 0; j < n; j++)
 		{
 			if(i==j)
 			{
