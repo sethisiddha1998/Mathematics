@@ -88,5 +88,6 @@ int main(int argc, char const *argv[])
 		/* code */
 	}
 	printf("%f\n",det(m,n));
+	printf("heelo");
 	return 0;
 }
